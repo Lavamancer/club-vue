@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from './views/Home.vue'
 
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
-  { path: '/',      name: 'Home',   component: () => import('../views/Home.vue') },
-  { path: '/about', name: 'About',  component: () => import('../views/About.vue') }
+  { path: '/',      name: 'Home',   component: () => import('./views/Home.vue') },
+  { path: '/about', name: 'About',  component: () => import('./views/About.vue') },
+  { path: '*', redirect: '/' }
 ]
 
 const router = new VueRouter({

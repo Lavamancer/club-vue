@@ -1,5 +1,5 @@
 import store from "@/store"
-import {Module, Mutation, VuexModule} from "vuex-module-decorators"
+import {Action, Module, Mutation, VuexModule} from "vuex-module-decorators"
 
 @Module({dynamic: true, store, name: "NavigationDrawerModule"})
 export default class NavigationDrawerModule extends VuexModule {

@@ -2,10 +2,7 @@
 
     <v-navigation-drawer app clipped v-model="enabled">
         <v-list>
-            <v-list-item><h2>Hola</h2></v-list-item>
-            <v-list-item><h2>Hola</h2></v-list-item>
-            <v-list-item><h2>Hola</h2></v-list-item>
-            <v-list-item><h2>Hola</h2></v-list-item>
+            <v-list-item v-for="item in 4"><h2>Item {{item}}</h2></v-list-item>
         </v-list>
     </v-navigation-drawer>
 

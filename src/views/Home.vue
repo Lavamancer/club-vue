@@ -33,6 +33,8 @@
 <script lang="ts">
     import {Component, Vue} from "vue-property-decorator"
     import UserService from "@/services/UserService"
+    import User from "@/models/User"
+    import {JsonConvert} from "json2typescript"
 
     @Component
     export default class Home extends Vue {
@@ -44,7 +46,10 @@
             this.progressBar = true
             try {
                 const response = UserService.getUser(1)
-                response.then(response => this.result = response.data)
+                response.then(response => {
+                    let user: User = new JsonConvert().deserializeObject(response.data, User)
+                    this.result = "id: " + user.id + ", name: " + user.name + ", email: " + user.email
+                })
             } catch (e) {
                 console.log("Error")
             } finally {

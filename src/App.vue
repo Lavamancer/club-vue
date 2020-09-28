@@ -1,18 +1,13 @@
 <template>
     <v-app>
-
-        <AppBarComponent/>
-
-        <NavigationDrawerComponent/>
-
+        <DrawerComponent/>
+        <NavbarComponent/>
         <v-main>
-            <v-container fluid>
-                <router-view/>
-            </v-container>
+            <router-view/>
+            <DialogComponent/>
         </v-main>
-
         <FooterComponent/>
-
+        <SnackbarComponent/>
     </v-app>
 </template>
 
@@ -21,9 +16,21 @@
     import AppBarComponent from "@/components/AppBarComponent.vue"
     import FooterComponent from "@/components/FooterComponent.vue"
     import NavigationDrawerComponent from "@/components/NavigationDrawerComponent.vue"
+    import DrawerComponent from "@/components/DrawerComponent.vue"
+    import NavbarComponent from "@/components/NavbarComponent.vue"
+    import DialogComponent from "@/components/DialogComponent.vue"
+    import SnackbarComponent from "@/components/SnackbarComponent.vue"
 
-    @Component({ components: {NavigationDrawerComponent, FooterComponent, AppBarComponent} })
+    @Component({ components: {SnackbarComponent, DialogComponent, FooterComponent, NavbarComponent, DrawerComponent} })
     export default class App extends Vue {
+
+        // created() {
+        //     this.$vuetify.theme.dark = getModule(SessionModule).session.dark
+        // }
+
+        // isMenuDisplayed() {
+        //     return this.$route.name != null && this.$route.name != "login"
+        // }
 
     }
 </script>

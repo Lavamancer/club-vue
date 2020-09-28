@@ -13,6 +13,7 @@
                         <v-spacer/>
                         <v-progress-circular v-if="progressBar" class="mr-5" indeterminate/>
                         <v-btn @click="getUsers()" class="primary">Users</v-btn>
+                        <v-btn @click="showDialog()" class="primary">Dialog</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-col>
@@ -35,6 +36,10 @@
     import UserService from "@/services/UserService"
     import User from "@/models/User"
     import {JsonConvert} from "json2typescript"
+    import DialogModule from "@/modules/DialogModule"
+    import {getModule} from "vuex-module-decorators"
+    import Dialog from "@/models/vue/Dialog"
+    import SnackbarModule from "@/modules/SnackbarModule"
 
     @Component
     export default class Home extends Vue {
@@ -57,6 +62,16 @@
                     this.progressBar = false
                 }, 1000)
             }
+        }
+
+        showDialog() {
+            getModule(DialogModule).showDialog(new Dialog(
+                "Aprendamos Vue",
+                "Es buena idea que parendas Vue por tu bien!",
+                () => {
+                    getModule(SnackbarModule).makeToast("Muy bien!!!!")
+                }
+            ))
         }
 
 

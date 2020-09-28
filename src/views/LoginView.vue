@@ -33,12 +33,15 @@
     import {Component, Ref, Vue} from "vue-property-decorator"
     import StringTool from "@/services/tools/StringTool"
     import UserService from "@/services/UserService"
+    import Session from "@/models/vue/Session"
+    import SessionModule from "@/modules/SessionModule"
+    import {getModule} from "vuex-module-decorators"
 
     @Component
     export default class LoginView extends Vue {
         @Ref() readonly form!: HTMLFormElement
         @Ref() readonly loginButton!: HTMLButtonElement
-        // sessionModule: SessionModule = getModule(SessionModule)
+        sessionModule: SessionModule = getModule(SessionModule)
         email: string = ""
         password: string = ""
         showPassword: boolean = false
@@ -55,8 +58,8 @@
         ]
 
         created() {
-            // this.sessionModule.setSession(new Session());
-            // this.sessionModule.saveSession()
+            this.sessionModule.setSession(new Session());
+            this.sessionModule.saveSession()
         }
 
         login() {
